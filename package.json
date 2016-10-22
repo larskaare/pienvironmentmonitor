@@ -5,7 +5,7 @@
   "main": "moni.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/larskaare/pienvironmentmonitor"
   },
   "scripts": {
     "start": "node moni.js"
