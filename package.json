@@ -16,6 +16,7 @@
     "app-module-path": "^2.1.0",
     "nconf": "^0.8.4",
     "python-shell": "^0.4.0",
+    "random-js": "^1.0.8",
     "winston": "^2.2.0"
   },
   "devDependencies": {
@@ -25,7 +26,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-jsbeautifier": "^0.2.13",
     "grunt-mocha-test": "^0.12.7",
-    "jshint": "^2.9.3",
+    "jshint": "^2.9.4",
     "mocha": "^3.0.2",
     "proxyquire": "^1.7.10",
     "sinon": "^1.17.5"
