@@ -1,4 +1,4 @@
 {
-    "MockPi": "true",
+    "MockPi": "false",
     "sensorReadTimer" : 10000
 }
