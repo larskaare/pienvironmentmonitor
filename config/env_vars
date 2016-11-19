@@ -1,4 +1,0 @@
-#Important environment variables
-export IOTHUB_CONNSTRING="HostName=environmentalcollector.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=ixoqlfAUpXFktcSlbsbTCvSUGrX5qm/ougwLKL76SsY="
-export DEVICE_KEY="ELOHAywIyqmdq76EIWiU8Who+QOyA6pRPYAWuREHO90="
-export HUB_HOSTNAME="environmentalcollector.azure-devices.net"
