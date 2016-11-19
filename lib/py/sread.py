@@ -18,5 +18,5 @@ sensorData['barometicPressure'] = data[1]
 sensorData['humidityP'] = data[2]
 sensorData['lux'] = lux
 
-print sensorData
-#print json.dumps(sensorData)
+#print sensorData
+print json.dumps(sensorData)
