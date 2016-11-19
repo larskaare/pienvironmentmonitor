@@ -14,8 +14,10 @@ var logger = new(winston.Logger)({
     ]
 });
 
-var sensors = require('sensorworker');
 
+
+
+var sensors = require('sensorworker');
 
 function getSensorData() {
     sensors.readSensors(function(data) {
@@ -23,4 +25,25 @@ function getSensorData() {
     });
 }
 
-getSensorData();
+var sendInterval = config.get('HubSendInterval') || 1000;
+
+var hubworker = require('hubworker');
+
+
+logger.info('Monitor: Starting up environment monitor, sending data each',sendInterval,'ms');
+
+hubworker.connectClient()
+
+
+setInterval(function() {
+
+
+    sensors.readSensors(function(data) {
+        // logger.info('Moni: getting sensor data', data);
+        hubworker.sendMessage(data);
+     });
+
+
+    
+},sendInterval);
+

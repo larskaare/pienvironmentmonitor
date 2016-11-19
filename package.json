@@ -8,12 +8,19 @@
     "url": "https://github.com/larskaare/pienvironmentmonitor"
   },
   "scripts": {
-    "start": "node moni.js"
+    "start": "node moni.js",
+    "createdevice": "node lib/js/createdeviceidentity.js",
+    "readdevice": "node lib/js/readdevicetocloudmessages.js"
   },
   "author": "Lars Kåre Skjørestad",
   "license": "ISC",
   "dependencies": {
     "app-module-path": "^2.1.0",
+    "azure-event-hubs": "0.0.4",
+    "azure-iot-device": "^1.0.17",
+    "azure-iot-device-amqp": "^1.0.17",
+    "azure-iothub": "^1.0.19",
+    "bluebird": "^3.4.6",
     "nconf": "^0.8.4",
     "python-shell": "^0.4.0",
     "random-js": "^1.0.8",

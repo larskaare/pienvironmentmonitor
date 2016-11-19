@@ -1,4 +1,8 @@
 {
-    "MockPi": "true",
-    "sensorReadTimer" : 10000
+    "MockPi": "false",
+    "DeviceID": "",
+    "HubSendInterval" : 1000,
+    "IOTHUB_CONNSTRING": "",
+    "DEVICE_KEY": "",
+    "HUB_HOSTNAME": ""
 }
