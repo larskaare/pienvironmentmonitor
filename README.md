@@ -31,4 +31,5 @@ The current PI Ennvironment Monitor read 2 sensors from the rpi gpio. The routin
 
  ## Inspiration ##
  * Azure IoT Hub Documentation https://docs.microsoft.com/azure/iot-hub/
-
+ * Azure IoT SDK on github https://github.com/Azure/azure-iot-sdks
+ 
