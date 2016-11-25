@@ -30,9 +30,9 @@ var sendInterval = config.get('HubSendInterval') || 1000;
 var hubworker = require('hubworker');
 
 
-logger.info('Monitor: Starting up environment monitor, sending data each',sendInterval,'ms');
+logger.info('Monitor: Starting up environment monitor, sending data each', sendInterval, 'ms');
 
-hubworker.connectClient()
+hubworker.connectClient();
 
 
 setInterval(function() {
@@ -41,9 +41,8 @@ setInterval(function() {
     sensors.readSensors(function(data) {
         // logger.info('Moni: getting sensor data', data);
         hubworker.sendMessage(data);
-     });
+    });
 
 
-    
-},sendInterval);
 
+}, sendInterval);
