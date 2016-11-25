@@ -1,6 +1,7 @@
 {
     "MockPi": "false",
     "DeviceID": "",
+    "DeviceLocation": "",
     "HubSendInterval" : 1000,
     "IOTHUB_CONNSTRING": "",
     "DEVICE_KEY": "",
