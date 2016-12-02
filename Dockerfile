@@ -1,4 +1,7 @@
-FROM node
+#FROM node
+
+#Arm version
+FROM hypriot/rpi-node
 
 RUN mkdir -p /usr/src/
 WORKDIR /usr/src
@@ -18,3 +21,11 @@ ENV HubSendInterval="1000"
 
 CMD ["npm","start"]
 
+#Typical run command
+#docker run -d -e "IOTHUB_CONNSTRING=<>" \
+#    -e "DEVICE_KEY=<>" \
+#    -e "HUB_HOSTNAME=<>" \
+#    -e "DeviceID=<>" \
+#    -e "DeviceLocation=dockersim" \
+#    -e "HubSendInterval=500" \
+#    envmonisim
