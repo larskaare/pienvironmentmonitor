@@ -7,7 +7,7 @@ RUN mkdir -p /usr/src/
 WORKDIR /usr/src
 
 RUN git clone https://github.com/larskaare/pienvironmentmonitor.git
-WORKDIR /usr/src/pienvironmentmonitor
+WORKDIR /usr/src/pienvironmentmonitor/moni
 
 RUN npm install
 

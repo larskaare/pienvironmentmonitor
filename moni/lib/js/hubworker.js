@@ -32,8 +32,12 @@ var client = clientFromConnectionString(connectionString);
 
 function printResultFor(op) {
     return function printResult(err, res) {
-        if (err) {logger.error('HubWorker: ' + ' error: ' + err.toString());}
-        if (res) {logger.info('HubWorker: ' + ' status: ' + res.constructor.name);}
+        if (err) {
+            logger.error('HubWorker: ' + ' error: ' + err.toString());
+        }
+        if (res) {
+            logger.info('HubWorker: ' + ' status: ' + res.constructor.name);
+        }
     };
 }
 
