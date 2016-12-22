@@ -1,0 +1,29 @@
+{
+  "name": "monidocdbreader",
+  "version": "0.0.1",
+  "description": "Azure DocumentDB Reader for Moni / PI Environment Monitor",
+  "main": "monidbread.js",
+  "scripts": {
+    "start": "node monidbread"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larskaare/pienvironmentmonitor.git"
+  },
+  "author": "Lars Kåre Skjørestad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/larskaare/pienvironmentmonitor/issues"
+  },
+  "homepage": "https://github.com/larskaare/pienvironmentmonitor#readme",
+  "dependencies": {
+    "app-module-path": "^2.1.0",
+    "documentdb": "^1.10.0",
+    "moment": "^2.17.1",
+    "nconf": "^0.8.4",
+    "winston": "^2.3.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.4"
+  }
+}

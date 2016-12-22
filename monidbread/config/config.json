@@ -1,0 +1,7 @@
+{
+    "AZ_HOST_URL": "",
+    "AZ_MASTER_KEY": "",
+    "dbLink": "dbs/environmentdata",
+    "collName": "devicedata",
+    "readInterval" : 2000
+}
