@@ -1,2 +1,0 @@
-export INFLUXDB="/data/influx"
-export GRAFANA="/data/grafana"
