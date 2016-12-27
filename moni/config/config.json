@@ -5,5 +5,8 @@
     "HubSendInterval" : 1000,
     "IOTHUB_CONNSTRING": "",
     "DEVICE_KEY": "",
-    "HUB_HOSTNAME": ""
+    "HUB_HOSTNAME": "",
+    "SendToInfluxDB": "false",
+    "Influx_host": "localhost",
+    "Influx_db": "environment_data"
 }

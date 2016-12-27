@@ -1,0 +1,18 @@
+version: '2'
+services:
+ influxdb:
+  build: ./influxdb/.
+  volumes:
+   - $INFLUXDB:/var/lib/inlfuxdb
+  ports:
+   #- 8083:8083
+   #- 2003:2003
+   - 8086:8086
+  environment:
+   - INFLUXDB_GRAPHITE_ENABLED=true
+ grafana:
+  build: ./grafana/.
+  volumes:
+   - $GRAFANA/db:/var/lib/grafana
+  ports:
+   - 3000:3000 

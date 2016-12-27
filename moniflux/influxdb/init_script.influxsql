@@ -1,0 +1,8 @@
+#Access influxdb in container by: docker exec -ti <containerName> /usr/bin/influx
+#Copy & Paste Script Statements below
+
+CREATE DATABASE environment_data
+CREATE USER moniwriter WITH PASSWORD 'moniwriter'
+CREATE USER monireader WITH PASSWORD 'monireader'
+GRANT WRITE ON envionment_data TO moniwriter
+GRANT READ ON environment_data TO monireader
