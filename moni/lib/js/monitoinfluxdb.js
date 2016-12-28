@@ -70,17 +70,11 @@ var printMessage = function(message) {
                 barometricpressure: message.body.barometicPressure,
                 humidity: message.body.humidityP,
                 lux: message.body.lux
-            },
-        }]).then(() => {
-            return influx.query(`
-            select * from environment
-            where device_id = ${Influx.escape.stringLit(message.body.deviceID)}
-            order by time desc
-            limit 10
-        `);
-        }).then(rows => {
-            rows.forEach(row => logger.info('MoniToInflux: Saving environment data ', row));
-        }).catch(() => {
+            }, 
+          }]).then(() => {
+            logger.info('MoniToInflux: We got another metrics stored ',message.body);  
+          })  
+           .catch(() => {
             logger.error('MoniToInflux: Unable to store iflux data');
         });
     } else {
