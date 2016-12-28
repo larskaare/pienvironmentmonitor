@@ -83,13 +83,13 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "mock1 + mock2 + mock3",
           "value": [
             "mock1",
             "mock2",
             "mock3"
-          ],
-          "tags": []
+          ]
         },
         "hide": 0,
         "includeAll": false,
@@ -123,7 +123,7 @@
   },
   "refresh": "30s",
   "schemaVersion": 13,
-  "version": 16,
+  "version": 20,
   "links": [],
   "gnetId": null,
   "rows": [
@@ -667,14 +667,14 @@
               "fill": true,
               "line": true,
               "op": "gt",
-              "value": 5000
+              "value": 1000
             },
             {
               "colorMode": "critical",
               "fill": true,
               "line": true,
               "op": "gt",
-              "value": 8500
+              "value": 3000
             }
           ],
           "timeFrom": null,
