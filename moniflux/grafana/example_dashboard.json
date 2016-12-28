@@ -83,13 +83,13 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "mock1 + mock2 + mock3",
           "value": [
             "mock1",
             "mock2",
             "mock3"
-          ]
+          ],
+          "tags": []
         },
         "hide": 0,
         "includeAll": false,
@@ -121,9 +121,9 @@
   "annotations": {
     "list": []
   },
-  "refresh": "5s",
+  "refresh": "30s",
   "schemaVersion": 13,
-  "version": 8,
+  "version": 16,
   "links": [],
   "gnetId": null,
   "rows": [
@@ -140,6 +140,7 @@
             "rgba(253, 33, 221, 0.97)"
           ],
           "datasource": "${DS_ENVIRONMENT_DATA}",
+          "decimals": 2,
           "editable": true,
           "error": false,
           "format": "celsius",
@@ -197,18 +198,6 @@
                 },
                 {
                   "params": [
-                    "device_id"
-                  ],
-                  "type": "tag"
-                },
-                {
-                  "params": [
-                    "device_location"
-                  ],
-                  "type": "tag"
-                },
-                {
-                  "params": [
                     "null"
                   ],
                   "type": "fill"
@@ -217,7 +206,7 @@
               "measurement": "environment",
               "policy": "default",
               "query": "SELECT mean(\"temperature\") FROM \"environment\" WHERE $timeFilter  GROUP BY time($interval) fill(null)",
-              "rawQuery": true,
+              "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
               "select": [
@@ -230,7 +219,7 @@
                   },
                   {
                     "params": [],
-                    "type": "mean"
+                    "type": "last"
                   }
                 ]
               ],
@@ -240,7 +229,7 @@
           "thresholds": "-5,35,45",
           "title": "Temperature",
           "type": "singlestat",
-          "valueFontSize": "80%",
+          "valueFontSize": "50%",
           "valueMaps": [
             {
               "op": "=",
@@ -260,6 +249,7 @@
             "rgba(172, 72, 45, 0.97)"
           ],
           "datasource": "${DS_ENVIRONMENT_DATA}",
+          "decimals": 2,
           "editable": true,
           "error": false,
           "format": "pressurehpa",
@@ -325,6 +315,8 @@
               "hide": false,
               "measurement": "environment",
               "policy": "default",
+              "query": "SELECT mean(\"barometricpressure\") FROM \"environment\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
+              "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
               "select": [
@@ -337,7 +329,7 @@
                   },
                   {
                     "params": [],
-                    "type": "mean"
+                    "type": "last"
                   }
                 ]
               ],
@@ -359,14 +351,15 @@
         },
         {
           "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": true,
+          "colorBackground": true,
+          "colorValue": false,
           "colors": [
             "rgba(230, 30, 30, 0.9)",
-            "rgba(92, 225, 29, 0.89)",
+            "rgba(72, 148, 35, 0.89)",
             "rgba(187, 5, 16, 0.97)"
           ],
           "datasource": "${DS_ENVIRONMENT_DATA}",
+          "decimals": 1,
           "editable": true,
           "error": false,
           "format": "percent",
@@ -431,6 +424,8 @@
               ],
               "measurement": "environment",
               "policy": "default",
+              "query": "SELECT mean(\"humidity\") FROM \"environment\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
+              "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
               "select": [
@@ -443,7 +438,7 @@
                   },
                   {
                     "params": [],
-                    "type": "mean"
+                    "type": "last"
                   }
                 ]
               ],
@@ -473,6 +468,7 @@
             "rgba(172, 72, 45, 0.97)"
           ],
           "datasource": "${DS_ENVIRONMENT_DATA}",
+          "decimals": 1,
           "editable": true,
           "error": false,
           "format": "none",
@@ -550,7 +546,7 @@
                   },
                   {
                     "params": [],
-                    "type": "mean"
+                    "type": "last"
                   }
                 ]
               ],
@@ -560,7 +556,7 @@
           "thresholds": "900,1300,2500",
           "title": "Light level",
           "type": "singlestat",
-          "valueFontSize": "80%",
+          "valueFontSize": "50%",
           "valueMaps": [
             {
               "op": "=",
@@ -615,7 +611,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 12,
+          "span": 9,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -638,7 +634,7 @@
               "hide": false,
               "measurement": "environment",
               "policy": "default",
-              "query": "SELECT distrinct(temperature) FROM environment group by $timefilter WHERE $timeFilter fill(previous)",
+              "query": "SELECT count(\"temperature\") FROM \"environment\" WHERE $timeFilter GROUP BY time(1m) fill(none)",
               "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
@@ -656,7 +652,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "device_id",
+                  "operator": "=~",
+                  "value": "/^$device_id$/"
+                }
+              ]
             }
           ],
           "thresholds": [
@@ -677,7 +679,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Samples 1m",
+          "title": "Samples",
           "tooltip": {
             "msResolution": false,
             "shared": false,
@@ -711,6 +713,115 @@
               "show": false
             }
           ]
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "rgba(212, 77, 19, 0.9)",
+            "rgba(97, 182, 17, 0.89)",
+            "rgba(249, 22, 22, 0.97)"
+          ],
+          "datasource": "${DS_ENVIRONMENT_DATA}",
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 8,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 3,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "policy": "default",
+              "query": "SELECT count(\"temperature\") FROM \"environment\" WHERE $timeFilter",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": "1000,5000,8000",
+          "timeFrom": "1m",
+          "timeShift": null,
+          "title": "Metric",
+          "type": "singlestat",
+          "valueFontSize": "150%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
         }
       ],
       "showTitle": false,
@@ -726,6 +837,7 @@
       "panels": [
         {
           "columns": [],
+          "datasource": "${DS_ENVIRONMENT_DATA}",
           "editable": true,
           "error": false,
           "fontSize": "100%",
@@ -761,7 +873,6 @@
           ],
           "targets": [
             {
-              "alias": "",
               "dsType": "influxdb",
               "groupBy": [
                 {
@@ -772,7 +883,7 @@
                 },
                 {
                   "params": [
-                    "null"
+                    "none"
                   ],
                   "type": "fill"
                 }
@@ -780,15 +891,39 @@
               "hide": false,
               "measurement": "environment",
               "policy": "autogen",
-              "query": "SELECT * FROM environment  ORDER BY time DESC limit  5",
+              "query": "SELECT * FROM environment WHERE \"device_id\" =~ /^$device_id$/ AND $timeFilter",
               "rawQuery": true,
-              "refId": "A",
+              "refId": "B",
               "resultFormat": "time_series",
               "select": [
                 [
                   {
                     "params": [
-                      "value"
+                      "temperature"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ],
+                [
+                  {
+                    "params": [
+                      "humidity"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ],
+                [
+                  {
+                    "params": [
+                      "temperature"
                     ],
                     "type": "field"
                   },
@@ -798,10 +933,18 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "device_id",
+                  "operator": "=~",
+                  "value": "/^$device_id$/"
+                }
+              ]
             }
           ],
-          "title": "Devices",
+          "timeFrom": "10s",
+          "timeShift": null,
+          "title": "Device metrics",
           "transform": "timeseries_to_columns",
           "type": "table"
         }
