@@ -1,6 +1,8 @@
 # Pi Environmental monitor #
 
-The idea: Rig a raspberry pi with a few environmental sensors, let sensor data flow into the cloud and be used for various scary purposes.
+<!-- markdownlint-disable MD033 -->
+
+The idea: Rig a raspberry pi with a few environmental sensors, let sensor data flow into the cloud and be used for various scary purposes :bowtie:
 
 ## The Raspberry PI Rig ##
 
