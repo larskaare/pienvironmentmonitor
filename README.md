@@ -4,7 +4,7 @@ The idea: Rig a raspberry pi with a few environmental sensors, let sensor data f
 
 ## The Raspberry PI Rig ##
 
-![The rig](docs/image_001.png)
+<img src="docs/images/image_001.jpg" width="200">
 
 ## Sensors ##
 
