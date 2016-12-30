@@ -1,4 +1,4 @@
-# The RPI rig #
+# The RPI Rig #
 
 My version of the Raspberry PI rig contains the following items:
 * Raspberry PI v3 running [Raspbian](https://www.raspberrypi.org/downloads/raspbian/)
@@ -19,3 +19,6 @@ A few images of my current rig. I finally found a good use of the old Mini DV Ca
 
 <img src="images/image_002.jpg" width="400">
 <img src="images/image_001.jpg" width="300">
+
+
+(I'm not affiliated with [Adafruit](https://www.adafruit.com) - but think they do great stuff and would like to recommend them! :smile:)

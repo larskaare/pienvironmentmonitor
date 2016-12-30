@@ -1,45 +1,27 @@
-# Pi Environmental monitor #
+# The PI Environmental monitor #
 
 <!-- markdownlint-disable MD033 -->
 
-The idea: Rig a raspberry pi with a few environmental sensors, let sensor data flow into the cloud and be used for various scary purposes :bowtie:
+The idea: Rig a raspberry pi with a few environmental sensors, let sensor data flow into the cloud and be used for various scary purposes :bowtie: 
+
+The Raspberry PI is a great, low-cost experimental platform. The potential for moving beyond experimental is high. Collecting environmental data like temperature, humidity, barometric pressure and light level are just easy accessible examples. The list of sensors that easily can be attached to this devices is huge.
+
+From a technical perspective I wanted to get more knowledge in using cloud solutions, SaaS/PaaS services, communication using api's and message buses.
+
+Obviously, collecting sensor data was done using a Raspberry PI :smile:. For the back-end part I choose to experiment with various services in the Azure eco-system and ended up using [Azure IOT Hub](https://azure.microsoft.com/en-us/services/iot-hub/) to manage devices and collect data from devices, [Azure Stream Analytics](https://azure.microsoft.com/en-us/services/stream-analytics/) for real time processing of the data the devices where sending and various Azure storage options to get some insight into the options. For my purpose the [Azure DocumentDB](https://azure.microsoft.com/en-us/services/documentdb/) seemed like a good companion.
+
+Even though the options seems pretty unlimited when working in eco-system like Azure, it is also quite obvious the you are guided in a certain direction driven by which services that are connected to each other. The way of least resistance is tempting one :fearful:. For the analytics purposes of my sensor data there were some very obvious choices in the Azure eco-system, the direct connection between Stream Analytics and [Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/) being one.
+
+I played around with Power BI and did not really find the use for real time data that convincing and decided to explore other options - like [Grafana](https://grafana.net). Sounds easy, but not straight forward. My data were apparently locked down in a document database with not standard support from Grafana or the community.
 
 Read more about
 
-* [The Raspberry PI Rig](docs/therig.md)
+* [The Raspberry PI Rig](docs/therig.md) 
+* [Moni - Code for collecting Sensor Data](docs/moni.md)
+* [Azure IOT Hub - the back end](docs/azureiot.md)
+* [Using an RPi Docker Swarm to scale up](docs/rpidockerswarm.md)
+* [Analyzing data with InfluxDB and Grafana](docs/influxgrafana)
 
+## Architecture ##
 
-
-## Sensors ##
-
-The **sensorworker.js** file is where the sensor magic happends. Update this part of the system to reflect what sensors you are using and how you pack the data into a message. Use the **sensorData** function to define you values and the **readSensors** function to do sensor magic
-
-The current PI Ennvironment Monitor read 2 sensors from the rpi gpio. The routines from reading the sensors are small Python scripts driven by **/lib/py/sread.py**
-
-* BME280 for providing temperature, barometric pressure and humidity
-* TSL2561 to proive ambient light values in lux
-
-## Installing & Running ##
-
-* Clone the repo, change directory and do a "npm install"
-* Make sure you have an Azure IOT Hub defined.
-  * Make a note of the hub connection sting ("Shared access policies->"Policy"->"Connection string - primary key"). It goes into config "IOTHUB_CONNSTRING"
-  * Make a note of the hub hostname. It goes into config "HUB_HOSTNAME"
-* Update config/config.json
-  * Set "MockPi" to "False" for reading sensors. Setting to "False" generates random values 
-  * Set "DeviceID" to a relevant device name - like "Envmonitor1"
-  * Set "HubSendInterval" to define how often the device sends sensor data to the hub (milliseconds)
-* Create device identity at the hub
-  * npm run-script createdevice
-  * Hope for success and make a not of the "PrimaryKey"
-  * Update config/config.json "DEVICE_KEY" with value from PrimaryKey
-* Start sending messages with sensordata to the hub
-  * npm start
-* Reading messages from the hub can be done in many ways
-  * npm run-script readdevice (from another terminal) could be one option
-
-## Inspiration ##
-
-* Azure IoT Hub Documentation https://docs.microsoft.com/azure/iot-hub/
-* Azure IoT SDK on github https://github.com/Azure/azure-iot-sdks
-
+<img src="docs/images/architecture_001.jpg" width="800">
