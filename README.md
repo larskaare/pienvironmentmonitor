@@ -4,9 +4,11 @@
 
 The idea: Rig a raspberry pi with a few environmental sensors, let sensor data flow into the cloud and be used for various scary purposes :bowtie:
 
-## The Raspberry PI Rig ##
+Read more about
 
-<img src="docs/images/image_001.jpg" width="200">
+* [The Raspberry PI Rig](http://docs/therig.md)
+
+
 
 ## Sensors ##
 
