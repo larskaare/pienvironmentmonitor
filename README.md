@@ -20,7 +20,7 @@ Read more about
 * [Moni - Code for collecting Sensor Data](docs/moni.md)
 * [Azure IOT Hub - the back end](docs/azureiot.md)
 * [Using an RPi Docker Swarm to scale up](docs/rpidockerswarm.md)
-* [Analyzing data with InfluxDB and Grafana](docs/influxgrafana)
+* [Analyzing data with InfluxDB and Grafana](docs/influxgrafana.md)
 
 ## Architecture ##
 

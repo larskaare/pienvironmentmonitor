@@ -6,7 +6,7 @@ For my experiments I decided to explore the Azure IOT realm. I used the followin
 * [Azure Stream Analytics](https://azure.microsoft.com/en-us/services/stream-analytics/) for real time processing of the data the devices where sending and various Azure storage opitions to get some insight into the options.
 * [Azure DocumentDB](https://azure.microsoft.com/en-us/services/documentdb/) to store environment data from the sensors
 
-One really valuable resource to get going with the programming is to look at Microsoft's [Azure repo](https://github.com/Azure) on github. In hard, almost impossible, to keep documentation etc. up-to-date, but I found examples and SDK's to be very valuable.
+One really valuable resource to get going with the programming is to look at Microsoft's [Azure repo](https://github.com/Azure) on github. It is hard, almost impossible, to keep documentation and examples up-to-date in the fast moving world of clouds, but I found the examples and SDK's to be very valuable.
 
 * [Azure IOT SDK](https://github.com/Azure/azure-iot-sdks)
 
@@ -25,5 +25,7 @@ The `monidbread` project is part of the pienvironmentmonitor repository. Assumin
   * Set "readInterval" to the period in millisecond (how often we pull the documentDB for changes)
 * Start reading documents
   * `npm start`
+
+At each `readInterval` the routine will list new documents/messages.
 
 Browsing into [Azure-documentdb-node](https://github.com/Azure/azure-documentdb-node) would be a good place to continue exploring this path using Node.js.

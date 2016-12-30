@@ -1,10 +1,10 @@
 # Moni #
 
-Moni is the software component for collection sensor data. It is a Node.js system using Python to talk to the physical sensors. Why not talk to the sensors using Node.js? A good questions! Experimenting and testing I found the robustness of the Python code to be far more robust and supportive when working with the RPI GPIO. No need to re-invent the wheel.
+Moni is the software component for collection sensor data. It is a Node.js system using Python to talk to the physical sensors. Why not talk to the sensors using Node.js? A good questions! Experimenting and testing I found the maturity of the Python code to be far more robust and supportive when working with the RPI GPIO. No need to re-invent the wheel.
 
 ## Installing & Running ##
 
-(Assuming the Node.js and Python is available on the RPi)
+(Assuming Node.js and Python is available on the RPi)
 
 * Clone the [pievironment](https://github.com/larskaare/pienvironmentmonitor.git) repository to your rpi.
 * Install [Tentacle PI](https://github.com/lexruee/tentacle_pi) to add support for the TSL2561 sensor. Follow the install instructions in the link. Remember to enable [I2C support](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c) in RPI.
