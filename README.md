@@ -6,7 +6,7 @@ The idea: Rig a raspberry pi with a few environmental sensors, let sensor data f
 
 Read more about
 
-* [The Raspberry PI Rig](http://docs/therig.md)
+* [The Raspberry PI Rig](docs/therig.md)
 
 
 
