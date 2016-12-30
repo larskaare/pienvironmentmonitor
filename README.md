@@ -24,4 +24,4 @@ Read more about
 
 ## Architecture ##
 
-<img src="docs/images/architecture_001.jpg" width="800">
+<img src="docs/images/architecture_002.jpg" width="800">
